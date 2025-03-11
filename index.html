@@ -85,7 +85,7 @@ function displayBooks(bookList) {
     bookList.forEach(book => {
         container.innerHTML += `
         <div class="book">
-            <a href="read.html?book=${book.id}"><h3>${book.title}</h3></a>
+            <a href="read.html?book=${title}"><h3>${book.title}</h3></a>
             <p><strong>Autor:</strong> ${book.author}</p>
             <div class="tags">
                 ${book.tags.map(tag => `<span class="tag" onclick="filterTag('${tag}')">${tag}</span>`).join('')}
