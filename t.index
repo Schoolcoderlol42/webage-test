@@ -79,6 +79,8 @@ const books = [
     {id: 4, title: 'Harry Potter und der Stein der Weisen', author: 'J.K. Rowling', tags: ['Fantasy', 'Jugend'], file: 'harry_potter.html'}
 ];
 
+let currentTag = '';
+
 function displayBooks(bookList) {
     const container = document.getElementById('booksContainer');
     container.innerHTML = '';
@@ -98,15 +100,16 @@ function displayBooks(bookList) {
 function searchBooks() {
     const query = document.getElementById('searchInput').value.toLowerCase();
     const filteredBooks = books.filter(book => 
-        book.title.toLowerCase().includes(query) || 
-        book.author.toLowerCase().includes(query)
+        (book.title.toLowerCase().includes(query) || 
+        book.author.toLowerCase().includes(query)) && 
+        (currentTag === '' || book.tags.includes(currentTag))
     );
     displayBooks(filteredBooks);
 }
 
 function filterTag(tag) {
-    const filteredBooks = books.filter(book => book.tags.includes(tag));
-    displayBooks(filteredBooks);
+    currentTag = tag;
+    searchBooks();
 }
 
 // Initial load
