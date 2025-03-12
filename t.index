@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Bücher Bibliothek</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .book {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .book a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .tags {
+            margin-top: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Online Bücher Bibliothek</h1>
+</header>
+
+<div class="container">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Bücher suchen..." onkeyup="searchBooks()">
+    </div>
+
+    <div id="booksContainer"></div>
+</div>
+
+<script>
+const books = [
+    {id: 1, title: 'Die Verwandlung', author: 'Franz Kafka', tags: ['Klassiker', 'Roman'], file: 'die_verwandlung.html'},
+    {id: 2, title: 'Faust', author: 'Johann Wolfgang von Goethe', tags: ['Drama', 'Klassiker'], file: 'faust.html'},
+    {id: 3, title: 'Der kleine Prinz', author: 'Antoine de Saint-Exupéry', tags: ['Kinder', 'Philosophie'], file: 'der_kleine_prinz.html'},
+    {id: 4, title: 'Harry Potter und der Stein der Weisen', author: 'J.K. Rowling', tags: ['Fantasy', 'Jugend'], file: 'harry_potter.html'}
+];
+
+function displayBooks(bookList) {
+    const container = document.getElementById('booksContainer');
+    container.innerHTML = '';
+    bookList.forEach(book => {
+        container.innerHTML += `
+        <div class="book">
+            <a href="${book.file}"><h3>${book.title}</h3></a>
+            <p><strong>Autor:</strong> ${book.author}</p>
+            <div class="tags">
+                ${book.tags.map(tag => `<span class="tag" onclick="filterTag('${tag}')">${tag}</span>`).join('')}
+            </div>
+        </div>
+        `;
+    });
+}
+
+function searchBooks() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const filteredBooks = books.filter(book => 
+        book.title.toLowerCase().includes(query) || 
+        book.author.toLowerCase().includes(query)
+    );
+    displayBooks(filteredBooks);
+}
+
+function filterTag(tag) {
+    const filteredBooks = books.filter(book => book.tags.includes(tag));
+    displayBooks(filteredBooks);
+}
+
+// Initial load
+displayBooks(books);
+
+</script>
+
+</body>
+</html>
