@@ -1,241 +1,126 @@
 <!DOCTYPE html>
-<html lang="at">
-
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="Login.js" charset="utf-8"></script>
-    <title>Home</title>
-    <style>
-        body { 
-            background-color: #0d1117; 
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            color: #ffffff;
-        }
-
-        h1 {
-            text-align: center;
-            color: #58a6ff;
-            margin: 20px 0;
-        }
-
-        p {
-            color: #c9d1d9;
-            margin: 15px;
-            line-height: 1.6;
-        }
-
-        /* Mobile Navigation */
-        .topnav {
-            overflow: hidden;
-            background-color: #21262d;
-            border-bottom: 1px solid #575757;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .topnav a {
-            color: #ffffff;
-            text-align: center;
-            text-decoration: none;
-            padding: 10px;
-            font-size: 16px;
-            flex-grow: 1;
-            text-align: center;
-            transition: background-color 0.3s;
-        }
-
-        .topnav a:hover {
-            background-color: #575757;
-            border-radius: 5px;
-        }
-
-        .topnav .menu-toggle {
-            display: none;
-            font-size: 20px;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .topnav .login-container {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-            justify-content: flex-end;
-        }
-
-        .login-input, .login-submit {
-            background-color: #161b22;
-            color: white;
-            border: 1px solid #575757;
-            padding: 10px;
-            border-radius: 20px;
-            margin: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .login-submit:hover {
-            background-color: #58a6ff;
-            border: 1px solid #58a6ff;
-        }
-
-        /* Responsive Sidebar */
-        .sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .sidebar a {
-            padding: 10px;
-            text-decoration: none;
-            font-size: 18px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidebar a:hover {
-            background-color: #575757;
-        }
-
-        .sidebar .closebtn {
-            position: absolute;
-            top: 0;
-            right: 20px;
-            font-size: 30px;
-            color: white;
-        }
-
-        .openbtn {
-            font-size: 20px;
-            cursor: pointer;
-            background-color: #111;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            display: block;
-            margin: 10px;
-            transition: background-color 0.3s;
-        }
-
-        .openbtn:hover {
-            background-color: #575757;
-        }
-
-        /* Bildgröße anpassen */
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        /* Mobile Optimierungen */
-        @media screen and (max-width: 768px) {
-            .topnav {
-                flex-direction: column;
-            }
-
-            .topnav a {
-                display: none;
-            }
-
-            .topnav .menu-toggle {
-                display: block;
-            }
-
-            .topnav.active a {
-                display: block;
-                text-align: left;
-            }
-
-            .login-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .login-input {
-                width: 100%;
-            }
-
-            .login-submit {
-                width: 100%;
-            }
-        }
-    </style>
+    <title>Mobile Website mit Login</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <!-- Navigation -->
-    <div class="topnav">
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-        <a class="active" href="index.html">Home</a>
-        <a href="Einbettungs-links.html">Einbettungs Generator</a>
-        <a href="NamenGenerator.html">Namengenerator</a>
-        <a href="beschreibung.html">Beschreibung</a>
-        <a href="Buchstaben.html">Buchstaben</a>
-        <a href="blog.html">Mein Blog</a>
-        <div class="login-container">
-            <form onsubmit="Anmelden()">
-                <input class="login-input" type="text" id="username" placeholder="Username">
-                <input class="login-input" type="password" id="password" placeholder="Password">
-                <button class="login-submit" type="submit">Login</button>
-            </form>
+    <div class="menu-bar">
+        <button class="menu-button" onclick="toggleMenu()">☰ Menü</button>
+        <div id="menu" class="menu">
+            <a href="#home">Startseite</a>
+            <a href="#about">Über uns</a>
+            <a href="#contact">Kontakt</a>
+            <a href="#login" onclick="showLogin()">Login</a>
         </div>
     </div>
 
-    <!-- Sidebar -->
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
-        <a href="googlelens.html">*Noch in Arbeit*</a>
-        <a href="QRcodegenerator.html">QR-Code Generator</a>
-        <a href="rechner.html">Taschenrechner</a>
-        <a href="Buttongenerator.html">Buttongenerator</a>
-        <a href="Bildrunterladen.html">Runterladen</a>
+    <div id="login-form" class="login-form">
+        <h2>Login</h2>
+        <form onsubmit="return handleLogin(event)">
+            <input type="text" id="username" placeholder="Benutzername" required>
+            <input type="password" id="password" placeholder="Passwort" required>
+            <button type="submit">Einloggen</button>
+        </form>
+        <button onclick="hideLogin()">Abbrechen</button>
     </div>
 
-    <button class="openbtn" onclick="openNav()">☰ Menü öffnen</button>
+    <div class="content">
+        <h1>Willkommen auf unserer mobilen Website!</h1>
+        <p>Hier ist der Inhalt der Seite.</p>
+    </div>
 
-    <!-- Hauptinhalt -->
-    <h1>Willkommen auf meiner Seite</h1>
-    <p>Die Website ist mein kleines Projekt, um HTML, CSS und JavaScript zu testen. Das Menü kann mit "q" geöffnet und mit "w" geschlossen werden.</p>
-
-    <!-- Skripte -->
     <script>
-        function openNav() {
-            document.getElementById("mySidebar").style.width = "250px";
-        }
+function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+}
 
-        function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
-        }
+function showLogin() {
+    document.getElementById('login-form').style.display = 'block';
+}
 
-        function toggleMenu() {
-            document.querySelector(".topnav").classList.toggle("active");
-        }
+function hideLogin() {
+    document.getElementById('login-form').style.display = 'none';
+}
 
-        document.addEventListener('keydown', function(event) {
-            if(event.key === "q") {
-                openNav();
-            }
-            if(event.key === "w") {
-                closeNav();
-            }
-        });
+function handleLogin(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Hier kannst du die Logik für die Authentifizierung hinzufügen
+    alert(`Benutzername: ${username}\nPasswort: ${password}`);
+    hideLogin();
+}
     </script>
-</body>
 
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-bar {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: relative;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: #444;
+    width: 100%;
+    z-index: 1;
+}
+
+.menu a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.menu a:hover {
+    background-color: #555;
+}
+
+.login-form {
+    display: none;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.login-form input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+.content {
+    padding: 20px;
+}
+    </style>
+</body>
 </html>
