@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axolotl Info</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            position: relative;
+        }
+        .burger-menu {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: none;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .login-form {
+            display: flex;
+            align-items: center;
+        }
+        .login-form input {
+            margin: 0 5px;
+            padding: 5px;
+            font-size: 14px;
+        }
+        .login-form button {
+            padding: 5px 10px;
+            font-size: 14px;
+            background: #4CAF50;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .burger-menu {
+                display: block;
+            }
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #333;
+                padding: 10px;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .login-form {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 10px;
+                background: #333;
+            }
+            .login-form.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Axolotl Info
+    </header>
+    <nav>
+        <div class="nav-container">
+            <button class="burger-menu" onclick="toggleMenu()">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="#home">Start</a></li>
+                <li><a href="#about">Über Axolotl</a></li>
+                <li><a href="#care">Pflege</a></li>
+            </ul>
+            <form class="login-form">
+                <input type="text" id="username" name="username" placeholder="Benutzername" required>
+                <input type="password" id="password" name="password" placeholder="Passwort" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </nav>
+    <section id="home">
+        <h1>Willkommen bei Axolotl Info</h1>
+        <p>Alles, was du über Axolotl wissen musst!</p>
+    </section>
+    <section id="about">
+        <h2>Über Axolotl</h2>
+        <p>Axolotl sind faszinierende Amphibien, die ihr gesamtes Leben im Larvenstadium bleiben.</p>
+    </section>
+    <section id="care">
+        <h2>Axolotl Pflege</h2>
+        <p>Hier erfährst du, wie du Axolotl richtig hältst und pflegst.</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Axolotl Info</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const loginForm = document.querySelector('.login-form');
+            navLinks.classList.toggle('show');
+            loginForm.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
