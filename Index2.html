@@ -3,124 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Website mit Login</title>
+    <title>Meine Website</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="menu-bar">
-        <button class="menu-button" onclick="toggleMenu()">☰ Menü</button>
-        <div id="menu" class="menu">
-            <a href="#home">Startseite</a>
-            <a href="#about">Über uns</a>
-            <a href="#contact">Kontakt</a>
-            <a href="#login" onclick="showLogin()">Login</a>
-        </div>
-    </div>
-
-    <div id="login-form" class="login-form">
-        <h2>Login</h2>
-        <form onsubmit="return handleLogin(event)">
-            <input type="text" id="username" placeholder="Benutzername" required>
-            <input type="password" id="password" placeholder="Passwort" required>
-            <button type="submit">Einloggen</button>
-        </form>
-        <button onclick="hideLogin()">Abbrechen</button>
-    </div>
-
-    <div class="content">
-        <h1>Willkommen auf unserer mobilen Website!</h1>
-        <p>Hier ist der Inhalt der Seite.</p>
-    </div>
-
-    <script>
-function toggleMenu() {
-    const menu = document.getElementById('menu');
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-}
-
-function showLogin() {
-    document.getElementById('login-form').style.display = 'block';
-}
-
-function hideLogin() {
-    document.getElementById('login-form').style.display = 'none';
-}
-
-function handleLogin(event) {
-    event.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    // Hier kannst du die Logik für die Authentifizierung hinzufügen
-    alert(`Benutzername: ${username}\nPasswort: ${password}`);
-    hideLogin();
-}
-    </script>
-
     <style>
-        body {
-    font-family: Arial, sans-serif;
+        * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.menu-bar {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    position: relative;
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
 }
 
-.menu-button {
-    background: none;
+header {
+    background: #333;
+    color: #fff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin: 20px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin: 10px 0 5px;
+}
+
+form input {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+form button {
+    padding: 10px;
+    background: #333;
+    color: #fff;
     border: none;
-    color: white;
-    font-size: 20px;
     cursor: pointer;
 }
 
-.menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    background-color: #444;
-    width: 100%;
-    z-index: 1;
+form button:hover {
+    background: #555;
 }
 
-.menu a {
-    color: white;
-    padding: 10px;
-    text-decoration: none;
+footer {
     text-align: center;
-}
-
-.menu a:hover {
-    background-color: #555;
-}
-
-.login-form {
-    display: none;
-    background-color: white;
     padding: 20px;
-    border: 1px solid #ccc;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-}
-
-.login-form input {
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
+    background: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
     width: 100%;
-}
-
-.content {
-    padding: 20px;
 }
     </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Meine Website</div>
+            <ul class="nav-links">
+                <li><a href="#home">Startseite</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="#login" class="login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Willkommen auf meiner Website!</h1>
+            <p>Hier ist ein kurzer Einführungstext.</p>
+        </section>
+
+        <section id="about">
+            <h2>Über uns</h2>
+            <p>Informationen über die Website oder das Unternehmen.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Kontakt</h2>
+            <p>Hier können Sie uns kontaktieren.</p>
+        </section>
+
+        <section id="login">
+            <h2>Login</h2>
+            <form action="#" method="post">
+                <label for="username">Benutzername:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Passwort:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Einloggen</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Meine Website. Alle Rechte vorbehalten.</p>
+    </footer>
 </body>
 </html>
