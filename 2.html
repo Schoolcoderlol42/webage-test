@@ -3,56 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axolotl Info</title>
+    <title>Axolotl Informationen</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.nav {
+    display: flex;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav ul li {
+    margin: 0 15px;
+}
+
+.nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    margin: 3px 0;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin: 20px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #4CAF50;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #4CAF50;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
+    </style>
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">Axolotl Info</div>
-            <button class="burger-menu" onclick="toggleMenu()">
-                &#9776;
-            </button>
-            <ul class="nav-links">
-                <li><a href="#home">Start</a></li>
+        <div class="logo">Axolotl Info</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <nav class="nav" id="nav">
+            <ul>
                 <li><a href="#about">Über Axolotl</a></li>
-                <li><a href="#care">Pflege</a></li>
                 <li><a href="#login">Login</a></li>
             </ul>
         </nav>
     </header>
-    
-    <section id="home">
-        <h1>Willkommen bei Axolotl Info</h1>
-        <p>Alles, was du über Axolotl wissen musst!</p>
-    </section>
 
-    <section id="about">
-        <h2>Über Axolotl</h2>
-        <p>Axolotl sind faszinierende Amphibien, die ihr gesamtes Leben im Larvenstadium bleiben.</p>
-    </section>
+    <main>
+        <section id="about">
+            <h1>Über Axolotl</h1>
+            <p>Axolotl sind faszinierende Amphibien, die für ihre Fähigkeit bekannt sind, Gliedmaßen zu regenerieren. Sie sind in Mexiko heimisch und werden oft als Haustiere gehalten.</p>
+        </section>
 
-    <section id="care">
-        <h2>Axolotl Pflege</h2>
-        <p>Hier erfährst du, wie du Axolotl richtig hältst und pflegst.</p>
-    </section>
-    
-    <section id="login">
-        <h2>Login</h2>
-        <form>
-            <label for="username">Benutzername:</label>
-            <input type="text" id="username" name="username" required>
-            
-            <label for="password">Passwort:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <button type="submit">Einloggen</button>
-        </form>
-    </section>
+        <section id="login">
+            <h2>Login</h2>
+            <form>
+                <label for="username">Benutzername:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Passwort:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Einloggen</button>
+            </form>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Axolotl Info</p>
+        <p>&copy; 2023 Axolotl Info. Alle Rechte vorbehalten.</p>
     </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+const nav = document.getElementById('nav');
+
+mobileMenu.addEventListener('click', () => {
+    nav.classList.toggle('active');
+});
+    </script>
 </body>
 </html>
