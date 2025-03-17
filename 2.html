@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axolotl Info</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Axolotl Info</div>
+            <button class="burger-menu" onclick="toggleMenu()">
+                &#9776;
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Start</a></li>
+                <li><a href="#about">Über Axolotl</a></li>
+                <li><a href="#care">Pflege</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <h1>Willkommen bei Axolotl Info</h1>
+        <p>Alles, was du über Axolotl wissen musst!</p>
+    </section>
+
+    <section id="about">
+        <h2>Über Axolotl</h2>
+        <p>Axolotl sind faszinierende Amphibien, die ihr gesamtes Leben im Larvenstadium bleiben.</p>
+    </section>
+
+    <section id="care">
+        <h2>Axolotl Pflege</h2>
+        <p>Hier erfährst du, wie du Axolotl richtig hältst und pflegst.</p>
+    </section>
+    
+    <section id="login">
+        <h2>Login</h2>
+        <form>
+            <label for="username">Benutzername:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Passwort:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Einloggen</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Axolotl Info</p>
+    </footer>
+</body>
+</html>
